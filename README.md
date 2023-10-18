@@ -1,3 +1,4 @@
+## Kaby Lake R
 perf stat --post /mnt/B/sem3/mss/project/post.sh -ebranch-misses,cache-misses,LLC-loads,node-stores -p 266791 -I 5000 --interval-count 2 -o /mnt/B/sem3/mss/project/temp.log
 
 perf stat -a --topdown -p 266791
