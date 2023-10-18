@@ -1,0 +1,6 @@
+hw_interrupts.received
+memory_disambiguation.history_reset
+sw_prefetch_access.nta
+sw_prefetch_access.prefetchw
+sw_prefetch_access.t0
+sw_prefetch_access.t1_t2
