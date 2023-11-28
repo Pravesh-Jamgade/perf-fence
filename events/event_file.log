@@ -95,7 +95,6 @@ i915/vcs0-wait/
 i915/vecs0-busy/                                  
 i915/vecs0-sema/                                  
 i915/vecs0-wait/                                  
-intel_pt//                                        
 msr/aperf/                                        
 msr/cpu_thermal_margin/                           
 msr/mperf/                                        

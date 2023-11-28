@@ -3,6 +3,7 @@ import sys
 import shlex, subprocess
 import argparse
 from multiprocessing import Process
+from subprocess import check_output, CalledProcessError
 
 parser = argparse.ArgumentParser(
                     prog='PEMtool',
@@ -19,7 +20,10 @@ args = parser.parse_args()
 
 def fire_in_the_hole(fire_args):
     print("start: " + str(os.getpid()))
-    p = subprocess.Popen(fire_args)
+    try:
+        check_output(fire_args)
+    except CalledProcessError as e:
+        print("exception: " + str(os.getpid()))
     print("end: " + str(os.getpid()))
 
 
@@ -114,14 +118,11 @@ met_cmd = met_cmd[0:len(met_cmd)-1]
 fire_metric = "perf stat --post /mnt/B/sem3/mss/project/post.sh -M {} -o /mnt/B/sem3/mss/project/temp2.log -I {} --interval-count {}".format( met_cmd, sampling_interval, interval_count)
 
 log_file.write(fire_event)
+log_file.write("\n\n")
 log_file.write(fire_metric)
 
 args1 = shlex.split(fire_event)
-p = subprocess.Popen(args1)
-
 args2 = shlex.split(fire_metric)
-p = subprocess.Popen(args2)
-
 
 proc1 = Process(target=fire_in_the_hole, args=(args1,))
 proc2 = Process(target=fire_in_the_hole, args=(args2,))
