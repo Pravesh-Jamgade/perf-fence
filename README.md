@@ -10,7 +10,7 @@
 
 ----------------------------------------
 perf stat --post /mnt/B/sem3/mss/project/post.sh -ebranch-misses,cache-misses,LLC-loads,node-stores -p 266791 -I 5000 --interval-count 2 -o /mnt/B/sem3/mss/project/temp.log
-perf stat -a --topdown -p 266791
+
 perf stat --post /mnt/B/sem3/mss/project/post.sh -ebranch-misses,cache-misses,LLC-loads,node-stores -p 266791 -I 5000 --interval-count 5
 
 
@@ -22,36 +22,6 @@ naming style
 
 condition[wi/wo].version[v1,v2..].metric/event[temp1/temp2].log
 ex. without DDoS --> wo.v1.temp1.log and wo.v1.temp2.log
-
-
-getconf -a | grep CACHE
-
-L3
-8192 sets
-768 byte per set
-64 byte cacheline
-12 ways per set
-
-
-offcore_requests.l3_miss_demand_data_rd
-offcore_requests_outstanding.l3_miss_demand_data_rd
-
-l2_rqsts.miss
-l2_trans.l2_wb
-l2_rqsts.all_demand_references 
-
-offcore_requests.all_data_rd
-offcore_requests_buffer.sq_full [Offcore requests buffer cannot take more entries for this thread core]
-offcore_requests_outstanding.l3_miss_demand_data_rd
-       [Counts number of Offcore outstanding Demand Data Read requests that
-        miss L3 cache in the superQ every cycle]
-offcore_requests.l3_miss_demand_data_rd           
-       [Demand Data Read requests who miss L3 cache]
-
-LLC-loads
-LLC-load-misses
-LLC-stores
-LLC-store-misses
 
 #################################
 
